@@ -7,6 +7,7 @@ import pandas as pd
 chars = ["[",",",";","{","}","(",")","\n","\t","=","]"," ","."]
 file = "combined_subject_vs_lab_with_sdoh_12Aug2021.csv"
 file_copy = "combined_subject_vs_lab_with_sdoh_copy.csv"
+file_fillna = "combined_subject_vs_lab_with_sdoh_copy_fillna.csv"
 #file_copy = "HT_Pros_test_data_new_copy.csv"
 #file = "HT_Pros_test_data_2020May09_1210.csv"
 
@@ -61,7 +62,7 @@ print(df_copy.shape)
 df_copy = df_copy.fillna(df_copy.median())
 print(df_copy.shape)
 print("na filled")
-df_copy.to_csv("combined_subject_vs_lab_with_sdoh_copy_fillna.csv",index=False)
+df_copy.to_csv(file_fillna,index=False)
 
 print("second checking...")
 df_copy = pd.read_csv(file_copy,nrows=1)
@@ -83,5 +84,5 @@ print(df.shape)
 
 #check na
 print("check nan...")
-df = pd.read_csv("combined_subject_vs_lab_with_sdoh_copy_fillna.csv",nrows=20000)
+df = pd.read_csv(file_fillna,nrows=20000)
 print(df.isnull().values.any())
